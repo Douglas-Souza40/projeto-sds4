@@ -12,13 +12,12 @@ const BarChart = () => {
 
     const mockData = {
         labels: {
-            categories: ['Barry Allen', 'Sara Connor', 'Gandalf Cinzento', 'Frodo Baggins', 'Bilbo Baggins',
-                'Samwise Gamgee', 'Peregrin Took', 'Gimli', 'Arwen Undómiel', 'Aragorn']
+            categories: ['Barry Allen', 'Sara Connor', 'Gandalf Cinzento', 'Frodo Baggins', 'Bilbo Baggins']
         },
         series: [
             {
                 name: "% Sucesso",
-                data: [43.6, 67.1, 67.7, 45.6, 71.1, 10.1, 5.01, 80.25, 100, 90.30, 95]
+                data: [43.6, 67.1, 67.7, 45.6, 71.1]
             }
         ]
     };
