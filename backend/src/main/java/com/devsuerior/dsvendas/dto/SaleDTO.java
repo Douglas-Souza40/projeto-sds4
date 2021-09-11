@@ -17,13 +17,13 @@ public class SaleDTO {
     public SaleDTO() {
     }
 
-    public SaleDTO(Long id, Integer visited, Integer deals, Double amount, LocalDate date, SellerDTO sellerDTO) {
+    public SaleDTO(Long id, Integer visited, Integer deals, Double amount, LocalDate date, SellerDTO seller) {
         this.id = id;
         this.visited = visited;
         this.deals = deals;
         this.amount = amount;
         this.date = date;
-        this.sellerDTO = sellerDTO;
+        this.sellerDTO = seller;
     }
 
     public SaleDTO(Sale sale) {

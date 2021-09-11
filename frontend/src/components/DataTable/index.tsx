@@ -1,4 +1,27 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { SalePage } from "types/sale";
+import { formatLocalDate } from "utils/format";
+import { BASE_URL } from "utils/requests";
+
 const DataTable = () => {
+
+    const [page, setPage] = useState<SalePage>({
+        first: true,
+        last: true,
+        number: 0,
+        totalElements: 0,
+        totalPages: 0,
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/sales?page=0&size=20&sort=date,desc`)
+            .then(response => {
+                setPage(response.data);
+                console.log(response.data)
+            });
+    }, []);
+
     return (
 
         <div className="table-responsive">
@@ -13,41 +36,15 @@ const DataTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>22/04/2021</td>
-                        <td>Barry Allen</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                    <tr>
-                        <td>22/04/2021</td>
-                        <td>Sara Connor</td>
-                        <td>40</td>
-                        <td>12</td>
-                        <td>5011.00</td>
-                    </tr>
-                    <tr>
-                        <td>22/04/2021</td>
-                        <td>Gandalf Cinzento</td>
-                        <td>50</td>
-                        <td>30</td>
-                        <td>6013.03</td>
-                    </tr>
-                    <tr>
-                        <td>22/04/2021</td>
-                        <td>Frodo Baggins</td>
-                        <td>12</td>
-                        <td>10</td>
-                        <td>517.00</td>
-                    </tr>
-                    <tr>
-                        <td>22/04/2021</td>
-                        <td>Bilbo Baggins</td>
-                        <td>12</td>
-                        <td>5</td>
-                        <td>117.00</td>
-                    </tr>
+                    {page.content?.map(item => (
+                        <tr key={item.id}>
+                            <td>{formatLocalDate(item.date, "dd/MM/yyyy")}</td>
+                            <td>{item.sellerDTO.name}</td>
+                            <td>{item.visited}</td>
+                            <td>{item.deals}</td>
+                            <td>{item.amount.toFixed(2)}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
