@@ -3,6 +3,7 @@ import DataTable from "components/DataTable";
 import DonutChart from "components/DonutChart";
 import Footer from "components/Footer";
 import NavBar from "components/NavBar";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     return (
@@ -28,6 +29,7 @@ const Dashboard = () => {
                 </div>
 
                 <DataTable />
+                <Link className="btn btn-primary btn-md" to="/">Voltar para Home</Link>
             </div>
             <Footer />
         </>
