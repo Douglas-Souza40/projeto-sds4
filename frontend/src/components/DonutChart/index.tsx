@@ -11,7 +11,7 @@ type ChartData = {
 const DonutChart = () => {
 
     //FORMA ERRADA
-    let chartData : ChartData =  { labels:[], series:[]};
+    let chartData : ChartData =  { labels: [], series: []};
 
     //FORMA ERRADA
     axios.get(`${BASE_URL}/sales/amount-by-seller`)
